@@ -28,11 +28,42 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
-      <!-- Timeblocks go here -->
-    </div>
+    <ul>
+        <li><input type="text" data-hours="8am" id="8am"></li>
+        <li><input type="text" data-hours="8am" id="9am"></li>
+        <li><input type="text" data-hours="8am" id="10am"></li>
+        <li><input type="text" data-hours="8am" id="11am"></li>
+        <li><input type="text" data-hours="8am" id="12pm"></li>
+        <li><input type="text" data-hours="8am" id="1pm"></li>
+        <li><input type="text" data-hours="8am" id="2pm"></li>
+        <li><input type="text" data-hours="8am" id="3pm"></li>
+        <li><input type="text" data-hours="8am" id="4pm"></li>
+        <li><input type="text" data-hours="8am" id="5pm"></li>
+        <li><input type="text" data-hours="8am" id="6pm"></li>
+        <li><input type="text" data-hours="8am" id="7pm"></li>
+        <li><input type="text" data-hours="8am" id="8pm"></li>
+    </ul>
+    <script>
+        var times = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
+        //timeslots
+        for(var i = 0; i < times.length; i ++) {
+            var tsDiv = $("<div>");
+                tsDiv.attr("data-hour", times[i]);
+                var ta = $("<textArea>");
+                var btnSave = $("<button>").text("Save");
+                buttonSave.addClass("saveButton")
+
+                tsDiv.append(ta);
+                tsDiv.append(buttonSave);
+
+                $("body").append(tsDiv);
+        }
+        localStorage.setItem($(this).parent().attr("data-hour"), "Text from input box");
+        localStorage.getItem("8am")
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    
   </body>
 </html>
