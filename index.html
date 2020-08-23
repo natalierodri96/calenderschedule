@@ -44,8 +44,15 @@
         <li><input type="text" data-hours="8am" id="8pm"></li>
     </ul>
     <script>
+        //variable for current time
+        var calendarTime = function () {
+            $("currentDay").text(moment().format('MMM Do YYYY, h:mm a'));
+        };
+        calendarTime ()
+        setInterval(calendarTime, 1000);
+        //time slots
         var times = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
-        //timeslots
+        //function for text save
         for(var i = 0; i < times.length; i ++) {
             var tsDiv = $("<div>");
                 tsDiv.attr("data-hour", times[i]);
@@ -58,8 +65,21 @@
 
                 $("body").append(tsDiv);
         }
+        //color change
+        var currentTime = moment().hour();
+        $("textArea").each(function() {
+            var hours = $(this).attr("id");
+            if (hours == currentTime) {
+                $(this).addClass("present");
+            } else if (hours > currentTime) {
+                $(this).addClass("future");
+            } else {
+                $(this).addClass("past");
+            }
+        });
         localStorage.setItem($(this).parent().attr("data-hour"), "Text from input box");
         localStorage.getItem("8am")
+
     </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
